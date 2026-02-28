@@ -1,79 +1,103 @@
 # AECO PPE Detection – YOLOv8
 
-## Problem Framing
+---
 
-Use case: Hard-hat detection on construction sites to support PPE compliance monitoring.
+## 1. AECO Problem Framing
 
-Goal: Detect presence or absence of hard hats in site imagery to assist safety supervisors in identifying potential violations.
+**Use case:** Hard-hat detection on construction sites to support PPE compliance monitoring.
 
-Operational priority: False Negatives are critical. Missing a worker without a hard hat poses a direct safety risk. The model prioritizes high recall.
+**Why this matters:** Construction sites present significant safety risks. Detecting workers without hard hats can assist supervisors in identifying potential violations early.
+
+**Success Criteria:**
+- Primary metric: High Recall (to reduce false negatives)
+- Secondary metrics: Precision and mAP50 / mAP50–95
+- Operational requirement: Human verification required before enforcement
 
 ---
 
-## Classes
+## 2. Class List + Label Rules
 
+### Classes
 - 0: hard_hat
 - 1: no_hard_hat
 
-Label rules:
-- Tight bounding boxes around visible helmets
-- If occluded, label only visible portion
-- Do not label extremely small or ambiguous objects
+### Label Rules
+- Tight bounding boxes around visible helmets.
+- If partially occluded, label only the visible portion.
+- Do not label extremely small, ambiguous, or blurred objects.
+- Avoid guessing when object identity is unclear.
 
 ---
 
-## Dataset
+## 3. Dataset Reference
 
-Source: Roboflow (YOLO format export)  
-Split: 80/20 train/validation  
-Dataset version: v__ (fill this)
-
----
-
-## Model
-
-YOLOv8 variant: yolov8n (or s – fill yours)  
-Epochs: __  
-Image size: __  
-Batch size: __  
+**Source:** Roboflow  
+**Dataset Link:** [INSERT ROBOFLOW LINK HERE]  
+**Format:** YOLOv8  
+**Split:** 80% Train / 20% Validation  
+**Dataset Version:** v__ (insert version number)
 
 ---
 
-## Results (Validation)
+## 4. Model & Training Configuration
 
-Precision: __  
-Recall: __  
-mAP50: __  
-mAP50-95: __  
+- Model variant: yolov8n (or yolov8s)
+- Epochs: __
+- Batch size: __
+- Image size (imgsz): __
+- Ultralytics version: __
 
-Key Takeaways:
-- Strong detection under normal lighting
-- Misses small or heavily occluded helmets
-- Occasional confusion with bright background objects
+Weights link: [Insert GitHub Release or external link]
 
 ---
 
-## How to Reproduce in Colab
+## 5. Results Summary (Validation)
 
-1. Open notebook in Colab
-2. Enable GPU
-3. Run all cells
-4. Metrics and plots will be generated automatically
+**Precision:** __  
+**Recall:** __  
+**mAP50:** __  
+**mAP50–95:** __  
+
+### Key Takeaways
+- Strong detection performance under standard lighting conditions.
+- Reduced performance when helmets are partially occluded or small.
+- Model prioritizes recall to reduce missed safety violations.
 
 ---
 
-## Reproducibility Checklist
+## 6. How to Reproduce (Google Colab)
 
-- Dataset link/version included
-- Model variant documented
-- Training parameters documented
+1. Open `/notebooks/02_train_eval.ipynb` in Google Colab.
+2. Enable GPU (Runtime → Change runtime type → GPU).
+3. Run all cells from top to bottom.
+4. Outputs generated:
+   - Training metrics (Precision / Recall / mAP50 / mAP50–95)
+   - Saved curves in `/results/curves/`
+   - Prediction samples in `/results/evidence/`
+
+If GPU is unavailable:
+- Run a short verification training (5 epochs).
+- Load provided trained weights for inference.
+
+---
+
+## 7. Reproducibility Checklist
+
+- Dataset link and version documented
+- YOLO model variant specified
+- Training parameters (epochs/batch/imgsz) specified
 - Ultralytics version documented
 - Weights link provided
+- Training curves saved in `/results/`
+- Validation and new-image predictions included
 
 ---
 
-## Governance & Risk
+## 8. Governance & Licensing
 
-This system supports safety monitoring but does not replace human supervision.
+This model supports PPE monitoring but does not replace human safety supervision.
 
-False negatives (missed violations) are critical. Human verification is required before enforcement actions.
+False negatives are critical in this application. All detections must be reviewed by a human operator before enforcement.
+
+License: [MIT / Apache / Internal Use Only]  
+Dataset rights: [Public / Licensed / Owned – specify source]
