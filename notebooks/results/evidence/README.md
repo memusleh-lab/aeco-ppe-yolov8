@@ -1,3 +1,2 @@
-Contains 
-  1 - training curves and prediction outputs.
-  2 - New predictions.
+# Validation Predictions
+10 image prediction screenshots.
