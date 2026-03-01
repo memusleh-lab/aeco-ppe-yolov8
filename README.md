@@ -1,103 +1,28 @@
-# AECO PPE Detection – YOLOv8
+# YOLOv8-Object-Detection-Project-M4U3-FMP Group 3
+Project-M4U3
+1. Project Title: AI-Powered Construction PPE Monitoring
 
----
+Problem Statement: Manual safety monitoring on high-stakes construction sites is limited by human fatigue and the scale of modern projects. This project provides an automated, real-time "second set of eyes" to identify missing safety gear, reducing the risk of life-threatening accidents.
 
-## 1. AECO Problem Framing
+Classes Detected: The model identifies five key categories: Human, Helmet, Vest, Boots, and Gloves.
 
-**Use case:** Hard-hat detection on construction sites to support PPE compliance monitoring.
+Dataset: https://universe.roboflow.com/huiyao-hu-sj18e/construction-ppe-detection/dataset/1
 
-**Why this matters:** Construction sites present significant safety risks. Detecting workers without hard hats can assist supervisors in identifying potential violations early.
+2. Results Summary
 
-**Success Criteria:**
-- Primary metric: High Recall (to reduce false negatives)
-- Secondary metrics: Precision and mAP50 / mAP50–95
-- Operational requirement: Human verification required before enforcement
+Performance: Achieved a Mean Average Precision (mAP50) of 0.85+, meeting the project's primary success criteria.
 
----
+Success Evidence: <img width="1191" height="602" alt="image" src="https://github.com/user-attachments/assets/55513183-38fa-4d15-af8c-14c966d33bc7" />
 
-## 2. Class List + Label Rules
 
-### Classes
-- 0: hard_hat
-- 1: no_hard_hat
+3. Reproducibility Steps
 
-### Label Rules
-- Tight bounding boxes around visible helmets.
-- If partially occluded, label only the visible portion.
-- Do not label extremely small, ambiguous, or blurred objects.
-- Avoid guessing when object identity is unclear.
+Setup: Open the provided Colab notebook and run the initial cell to install the ultralytics library.
 
----
+Inference: Upload the best.pt weights and run the prediction command: model.predict(source='your_image.jpg', conf=0.5).
 
-## 3. Dataset Reference
+4. Error Analysis & Limitations
 
-**Source:** Roboflow  
-**Dataset Link:** [INSERT ROBOFLOW LINK HERE]  
-**Format:** YOLOv8  
-**Split:** 80% Train / 20% Validation  
-**Dataset Version:** v__ (insert version number)
+Findings: The model occasionally struggles with image noise and crowded scenes, leading to missed helmets or misclassified gear (e.g., a glove detected as a helmet).
 
----
-
-## 4. Model & Training Configuration
-
-- Model variant: yolov8n (or yolov8s)
-- Epochs: __
-- Batch size: __
-- Image size (imgsz): __
-- Ultralytics version: __
-
-Weights link: [Insert GitHub Release or external link]
-
----
-
-## 5. Results Summary (Validation)
-
-**Precision:** __  
-**Recall:** __  
-**mAP50:** __  
-**mAP50–95:** __  
-
-### Key Takeaways
-- Strong detection performance under standard lighting conditions.
-- Reduced performance when helmets are partially occluded or small.
-- Model prioritizes recall to reduce missed safety violations.
-
----
-
-## 6. How to Reproduce (Google Colab)
-
-1. Open `/notebooks/02_train_eval.ipynb` in Google Colab.
-2. Enable GPU (Runtime → Change runtime type → GPU).
-3. Run all cells from top to bottom.
-4. Outputs generated:
-   - Training metrics (Precision / Recall / mAP50 / mAP50–95)
-   - Saved curves in `/results/curves/`
-   - Prediction samples in `/results/evidence/`
-
-If GPU is unavailable:
-- Run a short verification training (5 epochs).
-- Load provided trained weights for inference.
-
----
-
-## 7. Reproducibility Checklist
-
-- Dataset link and version documented
-- YOLO model variant specified
-- Training parameters (epochs/batch/imgsz) specified
-- Ultralytics version documented
-- Weights link provided
-- Training curves saved in `/results/`
-- Validation and new-image predictions included
-
----
-
-## 8. Governance & Licensing
-
-This model supports PPE monitoring but does not replace human safety supervision.
-
-False negatives are critical in this application. All detections must be reviewed by a human operator before enforcement.
-
-License: [MIT / Apache / Internal Use Only]  
-Dataset rights: [Public / Licensed / Owned – specify source]
+Future Work: Introducing data augmentation (simulated noise and blur) and more diverse "crowded" training images to improve robustness in low-quality conditions.
