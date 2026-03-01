@@ -100,5 +100,5 @@ See `/docs/governance_checklist.md` for full governance review.
 
 ## 9. License
 
-MIT License – Academic use.
-Dataset rights - Public
+#MIT License – Academic use.
+#Dataset rights - Public
