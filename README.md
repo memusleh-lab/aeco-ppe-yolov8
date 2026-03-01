@@ -7,7 +7,15 @@ YOLOv8_Object_Detection_PPE_Inference_Baseline_M4U3.ipynb
 **Training_Evaluation**
 YOLOv8_Object_Detection_Training&evaluation_M4U3.ipynb
 
-## 1. Problem Statement
+## 1. Project Title: AI-Powered Construction PPE Monitoring
+
+Problem Statement: Manual safety monitoring on high-stakes construction sites is limited by human fatigue and the scale of modern projects. This project provides an automated, real-time "second set of eyes" to identify missing safety gear, reducing the risk of life-threatening accidents.
+
+Classes Detected: The model identifies five key categories: Human, Helmet, Vest, Boots, and Gloves.
+
+Dataset: https://universe.roboflow.com/huiyao-hu-sj18e/construction-ppe-detection/dataset/1
+
+## 2. Problem Statement
 
 This project develops a YOLOv8 object detection model for Construction PPE Detection in AECO environments.
 
@@ -20,14 +28,14 @@ The goal is to detect:
 
 The system supports safety compliance screening in construction environments.
 
-## 2. Dataset
+## 3. Dataset
 
 - Source: Roboflow – Construction PPE Detection
 - Format: YOLOv8
 - Train/Validation split: 80/20
 - Image size: 640x640
 
-## 3. Model Configuration
+## 4. Model Configuration
 
 - Model: YOLOv8s (Small)
 - Epochs: 30
@@ -36,15 +44,8 @@ The system supports safety compliance screening in construction environments.
 - Ultralytics version: 8.4.x
 - Environment: Google Colab (Tesla T4 GPU)
   
-## 1. Project Title: AI-Powered Construction PPE Monitoring
 
-Problem Statement: Manual safety monitoring on high-stakes construction sites is limited by human fatigue and the scale of modern projects. This project provides an automated, real-time "second set of eyes" to identify missing safety gear, reducing the risk of life-threatening accidents.
-
-Classes Detected: The model identifies five key categories: Human, Helmet, Vest, Boots, and Gloves.
-
-Dataset: https://universe.roboflow.com/huiyao-hu-sj18e/construction-ppe-detection/dataset/1
-
-## 4. Results Summary
+## 5. Results Summary
 
 Validation Performance (Performance: Achieved a Mean Average Precision (mAP50) of 0.85+, meeting the project's primary success criteria.):
 
@@ -63,7 +64,7 @@ Training curves available in `/results/`.
 Success Evidence: <img width="1191" height="602" alt="image" src="https://github.com/user-attachments/assets/55513183-38fa-4d15-af8c-14c966d33bc7" />
 
 
-## 5. Reproducibility Steps
+## 6. Reproducibility Steps
 
 To reproduce results:
 
@@ -79,13 +80,13 @@ To reproduce results:
 
 Inference: Upload the best.pt weights and run the prediction command: model.predict(source='your_image.jpg', conf=0.5).
 
-## 6. Error Analysis & Limitations
+## 7. Error Analysis & Limitations
 
 Findings: The model occasionally struggles with image noise and crowded scenes, leading to missed helmets or misclassified gear (e.g., a glove detected as a helmet).
 
 Future Work: Introducing data augmentation (simulated noise and blur) and more diverse "crowded" training images to improve robustness in low-quality conditions.
 
-## 7. Governance & Limitations
+## 8. Governance & Limitations
 
 This model is an assistive screening tool only.
 
@@ -97,6 +98,6 @@ It:
 See `/docs/governance_checklist.md` for full governance review.
 
 
-## 8. License
+## 9. License
 
 MIT License – Academic use.
