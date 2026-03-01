@@ -2,10 +2,10 @@
 
 This folder contains:
 
-- 01_inference_baseline.ipynb  
+- 01_inference_baseline_FMP_Group3.ipynb 
   Runs inference using trained weights on validation and new images.
 
-- 02_train_eval.ipynb  
+- 02_train_eval_FMP_Group3.ipynb
   Trains YOLOv8 model and outputs evaluation metrics and training curves.
 
 All notebooks are designed to run in Google Colab without local installation.
