@@ -64,7 +64,7 @@ Training curves available in `/results/`.
 Success Evidence: <img width="1191" height="602" alt="image" src="https://github.com/user-attachments/assets/55513183-38fa-4d15-af8c-14c966d33bc7" />
 
 
-## 6. Reproducibility Steps
+## 6.A Reproducibility Steps
 
 To reproduce results:
 
@@ -79,6 +79,34 @@ To reproduce results:
    - Save prediction outputs
 
 Inference: Upload the best.pt weights and run the prediction command: model.predict(source='your_image.jpg', conf=0.5).
+
+
+## 6.B Reproducibility Proof
+
+Last successful end-to-end training run:
+
+- **Date (UTC):** 2026-03-XX (update with today’s date)
+- **Environment:** Google Colab
+- **Python Version:** 3.12
+- **Ultralytics Version:** 8.4.17
+- **Hardware:** NVIDIA Tesla T4 GPU (CUDA 12.0)
+- **Training Duration (30 epochs):** ~0.77 hours (~46 minutes)
+
+### Expected Runtime
+
+On a Colab Tesla T4 GPU:
+- 30 epochs training: ~40–60 minutes
+- Evaluation + inference: ~3–5 minutes
+- Total notebook runtime: ~50–65 minutes
+
+On CPU-only runtime:
+- Training time may exceed 2–3 hours (not recommended).
+
+To reproduce:
+1. Open the notebook in Google Colab.
+2. Enable GPU (Runtime → Change runtime type → GPU).
+3. Restart runtime.
+4. Run all cells from top to bottom.
 
 ## 7. Error Analysis & Limitations
 
